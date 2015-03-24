@@ -57,7 +57,7 @@ wG.guessLayer = function guessLayer(f) {
     f = f.toLowerCase();
     if(f.match(/\.drl|\.drd|\.txt/))
         return [wG.BOTTOM|wG.TOP, wG.BOARD];
-    if(f.match(/\.out|\.gml|outline/))
+    if(f.match(/\.out|outline/))
         return [wG.BOTTOM|wG.TOP, wG.OUTLINE];
     if(f.match(/\.gbl|\.sol/) || f.match(/bot/) && f.match(/copper|signal/))
         return [wG.BOTTOM, wG.COPPER];
@@ -474,7 +474,7 @@ wG.renderLayer = function renderLayer(canvas, g, limits) {
                     if(g.type == wG.COPPER)
                         ctx.lineWidth = Math.ceil(s[1]*scaleMax/3+.01)/scaleMax*3;
                     else
-                        ctx.lineWidth = Math.max(s[1], 0.008);
+                        ctx.lineWidth = s[1];
                     ctx.lineCap = 'round';
                     if(mode == 1 || mode == 5) { // Linear Interpolation.
                         ctx.beginPath();
